@@ -1,6 +1,29 @@
+# Dependencies
 node_modules/
+
+# Python cache & virtual environments
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+ENV/
+
+# Environment files
 .env
+.env.*
+!.env.example
+backend/uploads/
+
+# Build outputs
 dist/
 build/
+*.db
+*.sqlite3
+
+# Logs & OS
 *.log
 .DS_Store
+.idea/
+.vscode/
