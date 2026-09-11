@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   # FastAPI Backend API Server
   backend:
@@ -16,7 +14,7 @@ services:
       - APP_NAME=Smart Plastic Waste Collection Optimization Platform
       - API_V1_PREFIX=/api
       - DATABASE_URL=sqlite:///./ecoroute.db
-      - SECRET_KEY=production_jwt_secret_key_change_in_production_deployment_abc123!
+      - SECRET_KEY=${SECRET_KEY}
       - ACCESS_TOKEN_EXPIRE_MINUTES=1440
       - CORS_ORIGINS=["http://localhost","http://localhost:80","http://localhost:5173","http://localhost:3000"]
       - OSRM_SERVER_URL=http://router.project-osrm.org
@@ -28,11 +26,11 @@ services:
     networks:
       - ecoroute-net
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8000/api/health"]
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/health')"]
       interval: 30s
       timeout: 10s
       retries: 3
-      start_period: 10s
+      start_period: 30s
 
   # React SPA Frontend served via Nginx Reverse Proxy
   frontend:
