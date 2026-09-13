@@ -21,7 +21,7 @@ services:
       - UPLOAD_DIR=/app/uploads
       - MAX_UPLOAD_SIZE_MB=10
     volumes:
-      - backend_data:/app
+      
       - backend_uploads:/app/uploads
     networks:
       - ecoroute-net
@@ -52,5 +52,5 @@ networks:
     driver: bridge
 
 volumes:
-  backend_data:
+  
   backend_uploads:
